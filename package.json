@@ -1,0 +1,16 @@
+{
+  "name": "file-type-analyser",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite --port 1420",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2"
+  },
+  "devDependencies": {
+    "vite": "^6"
+  }
+}

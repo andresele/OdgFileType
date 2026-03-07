@@ -1,0 +1,3 @@
+[target.x86_64-unknown-linux-gnu]
+# Unset VS Code snap GTK vars that pull in snap core20 libpthread (GLIBC_PRIVATE conflict)
+runner = "env -u LD_LIBRARY_PATH -u GTK_PATH -u GTK_EXE_PREFIX -u GTK_IM_MODULE_FILE -u GIO_MODULE_DIR -u GSETTINGS_SCHEMA_DIR"

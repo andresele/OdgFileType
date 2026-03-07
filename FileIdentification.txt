@@ -1,0 +1,32 @@
+
+File signatures
+- Also called magic numbers, or magic bytes.
+- First bytes (file header).
+- Acts as signature aka fingerprint for software to be able to recognise
+  filetype.
+- Ensure accurate file type.
+- Used in malware detection ensurng claimed file type is accurate.
+- Used in forensics for recovering file types fom corrupted files or 
+  storage devices.
+
+Byte Frequency Analysis
+- Analyse statistical distribution of bytes (0-255) within an entire file.
+- Each file type have unique byte frequency signatures.
+
+Byte Frequency Cross-correlation
+- Examines correlation between the frequencies of different bytes.
+- Helps identifying the structure of the data.
+
+File Header/Trailer analysis
+- Include trailers (end of file markers).
+- Include specific internal, non-contiguous data patterns that identify 
+  structure.
+
+N-gram analysis
+- Analyzes frequency of sequences of n bytes (e.g. pairs, triplets)
+  throughout a file.
+- Effective for identifying specific file structure.
+
+Strings and Keyword analysis
+- Scans for ASCII or Unicode strings like PDF, <HTML> or application
+  specific signatures like "Creator:Photoshop" to identify file type.

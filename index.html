@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Type Analyser</title>
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>File Type Analyser</h1>
+      <p class="subtitle">
+        Identify file types via magic bytes, byte-frequency analysis, cross-correlation,
+        header/trailer patterns, n-gram analysis, and keyword scanning.
+      </p>
+    </header>
+
+    <main>
+      <!-- Drop zone -->
+      <section id="drop-zone" class="drop-zone" aria-label="Drop files here">
+        <div class="drop-icon">&#128196;</div>
+        <p class="drop-text">Drag &amp; drop files here</p>
+        <p class="drop-sub">or use the buttons below</p>
+        <div class="btn-row">
+          <button id="btn-open-files" class="btn btn-primary">Open File(s)</button>
+          <button id="btn-open-folder" class="btn btn-secondary">Open Folder</button>
+        </div>
+      </section>
+
+      <!-- Status bar -->
+      <div id="status-bar" class="status-bar hidden">
+        <span id="status-text"></span>
+        <span id="spinner" class="spinner hidden"></span>
+      </div>
+
+      <!-- Results -->
+      <section id="results-section" class="hidden">
+        <div class="results-header">
+          <h2>Analysis Results</h2>
+          <div class="results-controls">
+            <button id="btn-clear" class="btn btn-ghost">Clear</button>
+            <button id="btn-save" class="btn btn-accent">Save Results (.txt)</button>
+          </div>
+        </div>
+        <div id="results-container"></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
