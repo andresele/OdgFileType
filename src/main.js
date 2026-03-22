@@ -15,6 +15,11 @@ const resultsSection   = document.getElementById('results-section');
 const resultsContainer = document.getElementById('results-container');
 const btnSave  = document.getElementById('btn-save');
 const btnClear = document.getElementById('btn-clear');
+const btnDocs      = document.getElementById('btn-docs');
+const btnDocsBack  = document.getElementById('btn-docs-back');
+const mainEl       = document.querySelector('main');
+const docsPage     = document.getElementById('docs-page');
+const docsTabBtns  = document.querySelectorAll('.docs-tab-btn');
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -306,15 +311,18 @@ async function saveResults() {
 // ── Drag and drop (Tauri v2 native events) ──────────────────────────────────
 
 // Visual feedback while dragging
-await listen('tauri://drag', () => {
+await listen('tauri://drag-enter', () => {
   dropZone.classList.add('drag-over');
 });
-await listen('tauri://drag-cancelled', () => {
+await listen('tauri://drag-over', () => {
+  dropZone.classList.add('drag-over');
+});
+await listen('tauri://drag-leave', () => {
   dropZone.classList.remove('drag-over');
 });
 
 // Files dropped
-await listen('tauri://drop', async (event) => {
+await listen('tauri://drag-drop', async (event) => {
   dropZone.classList.remove('drag-over');
   const paths = event.payload?.paths ?? [];
   if (paths.length > 0) {
@@ -355,4 +363,26 @@ btnClear.addEventListener('click', () => {
   resultsContainer.innerHTML = '';
   resultsSection.classList.add('hidden');
   hideStatus();
+});
+
+// ── Docs page navigation ─────────────────────────────────────────────────────
+
+btnDocs.addEventListener('click', () => {
+  mainEl.classList.add('hidden');
+  docsPage.classList.remove('hidden');
+});
+
+btnDocsBack.addEventListener('click', () => {
+  docsPage.classList.add('hidden');
+  mainEl.classList.remove('hidden');
+});
+
+docsTabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+    docsTabBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.docs-panel').forEach(p => p.classList.add('hidden'));
+    document.getElementById(`docs-tab-${tab}`).classList.remove('hidden');
+  });
 });

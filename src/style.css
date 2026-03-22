@@ -305,6 +305,139 @@ main { flex: 1; padding: 32px 40px; display: flex; flex-direction: column; gap: 
   border-top: 1px solid #5a1a1a;
 }
 
+/* ── Docs button in header ──────────────────────────────────── */
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.header-top h1 { margin: 0; }
+
+/* ── Docs page ──────────────────────────────────────────────── */
+.docs-page {
+  padding: 0 0 40px;
+}
+
+.docs-page-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.docs-page-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ── Docs tab nav ───────────────────────────────────────────── */
+.docs-tab-nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 28px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0;
+}
+.docs-tab-btn {
+  padding: 8px 22px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  background: none;
+  color: var(--text-sub);
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+  transition: color .15s, background .15s;
+}
+.docs-tab-btn:hover { color: var(--text); background: var(--surface2); }
+.docs-tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  background: none;
+}
+
+/* ── Docs panel ─────────────────────────────────────────────── */
+.docs-panel {
+  padding: 0 24px;
+}
+#docs-tab-methods {
+  padding: 0 40px;
+}
+
+.docs-panel h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+.docs-panel h4 {
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--text-sub);
+  margin: 22px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.docs-panel p {
+  font-size: .9rem;
+  line-height: 1.7;
+  color: var(--text-sub);
+  margin: 0 0 12px;
+}
+.docs-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.docs-panel ul li {
+  font-size: .9rem;
+  line-height: 1.6;
+  color: var(--text-sub);
+  padding-left: 16px;
+  position: relative;
+}
+.docs-panel ul li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+.docs-panel ul li strong { color: var(--text); }
+
+/* ── Method doc cards ───────────────────────────────────────── */
+.method-doc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 14px;
+}
+.method-doc-title {
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.method-doc-card p {
+  margin: 0;
+}
+.method-doc-card code {
+  font-family: 'Fira Mono', 'Cascadia Code', 'Consolas', monospace;
+  font-size: .82rem;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--accent2);
+}
+
 /* ── Utility ────────────────────────────────────────────────── */
 .hidden { display: none !important; }
 
