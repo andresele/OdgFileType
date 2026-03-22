@@ -15,6 +15,20 @@
   --shadow:    0 4px 24px rgba(0,0,0,0.35);
 }
 
+/* ── Light theme ─────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg:        #f0f2f9;
+  --surface:   #ffffff;
+  --surface2:  #e6eaf7;
+  --border:    #c4cade;
+  --accent:    #4355e0;
+  --accent2:   #1a9e87;
+  --danger:    #d32f2f;
+  --text:      #1a1d2e;
+  --text-sub:  #5a6280;
+  --shadow:    0 4px 24px rgba(0,0,0,0.10);
+}
+
 html, body { height: 100%; }
 
 body {
@@ -66,6 +80,7 @@ main { flex: 1; padding: 32px 40px; display: flex; flex-direction: column; gap: 
   border-color: var(--accent);
   background: #1e2240;
 }
+[data-theme="light"] .drop-zone.drag-over { background: #dce1ff; }
 
 .drop-icon { font-size: 3rem; margin-bottom: 12px; }
 .drop-text  { font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; }
@@ -93,6 +108,7 @@ main { flex: 1; padding: 32px 40px; display: flex; flex-direction: column; gap: 
 
 .btn-primary:hover   { opacity: .88; }
 .btn-secondary:hover { background: #2c3150; }
+[data-theme="light"] .btn-secondary:hover { background: #d4d9ef; }
 .btn-accent:hover    { opacity: .88; }
 .btn-ghost:hover     { color: var(--text); border-color: var(--accent); }
 
@@ -185,6 +201,7 @@ main { flex: 1; padding: 32px 40px; display: flex; flex-direction: column; gap: 
   letter-spacing: .03em;
 }
 .badge-type { background: #2d3b7e; color: #a3b4ff; }
+[data-theme="light"] .badge-type { background: #dce1ff; color: #2d3b7e; }
 .badge-size { background: var(--surface); color: var(--text-sub); border: 1px solid var(--border); }
 .badge-ext  { background: #1e3430; color: var(--accent2); }
 
@@ -304,6 +321,7 @@ main { flex: 1; padding: 32px 40px; display: flex; flex-direction: column; gap: 
   font-size: .88rem;
   border-top: 1px solid #5a1a1a;
 }
+[data-theme="light"] .card-error { background: #fff0f0; border-top-color: #ffcdd2; }
 
 /* ── Docs button in header ──────────────────────────────────── */
 .header-top {
@@ -313,6 +331,8 @@ main { flex: 1; padding: 32px 40px; display: flex; flex-direction: column; gap: 
   gap: 16px;
 }
 .header-top h1 { margin: 0; }
+.header-actions { display: flex; align-items: center; gap: 8px; }
+.btn-icon { padding: 7px 12px; font-size: 1rem; }
 
 /* ── Docs page ──────────────────────────────────────────────── */
 .docs-page {
@@ -448,3 +468,11 @@ main { flex: 1; padding: 32px 40px; display: flex; flex-direction: column; gap: 
 .bar-high    { background: #4eccb3; }
 .bar-mid     { background: #f4c542; }
 .bar-low     { background: var(--danger); }
+
+/* Method confidence pill backgrounds (theme-aware) */
+.pill-high { background: #0e2f25; }
+.pill-mid  { background: #2e2810; }
+.pill-low  { background: #2a1212; }
+[data-theme="light"] .pill-high { background: #c8efe6; }
+[data-theme="light"] .pill-mid  { background: #fef3c7; }
+[data-theme="light"] .pill-low  { background: #fee2e2; }

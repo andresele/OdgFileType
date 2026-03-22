@@ -17,9 +17,25 @@ const btnSave  = document.getElementById('btn-save');
 const btnClear = document.getElementById('btn-clear');
 const btnDocs      = document.getElementById('btn-docs');
 const btnDocsBack  = document.getElementById('btn-docs-back');
+const btnTheme     = document.getElementById('btn-theme');
 const mainEl       = document.querySelector('main');
 const docsPage     = document.getElementById('docs-page');
 const docsTabBtns  = document.querySelectorAll('.docs-tab-btn');
+
+// ── Theme ────────────────────────────────────────────────────────────────────
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem('theme', theme);
+  btnTheme.textContent = theme === 'light' ? '🌙' : '☀';
+  btnTheme.title = theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode';
+}
+
+applyTheme(localStorage.getItem('theme') ?? 'dark');
+
+btnTheme.addEventListener('click', () => {
+  applyTheme(document.documentElement.dataset.theme === 'light' ? 'dark' : 'light');
+});
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -189,7 +205,7 @@ function buildMethodItem(m) {
   header.className = 'method-header';
   header.innerHTML = `
     <span class="method-name">${esc(m.method_name)}</span>
-    <span class="method-conf-pill conf-${cls}" style="background:${pillBg(cls)}">
+    <span class="method-conf-pill conf-${cls} pill-${cls}">
       ${pct(m.confidence)}% confidence
     </span>`;
   div.appendChild(header);
@@ -227,11 +243,7 @@ function buildMethodItem(m) {
   return div;
 }
 
-function pillBg(cls) {
-  if (cls === 'high') return '#0e2f25';
-  if (cls === 'mid')  return '#2e2810';
-  return '#2a1212';
-}
+function pillBg(_cls) { return ''; } // backgrounds now handled by CSS .pill-* classes
 
 function esc(str) {
   return String(str || '')
@@ -259,6 +271,15 @@ async function saveResults() {
     lines.push(`Saved (UTC):    ${utcTs}`);
     lines.push(`Files analysed: ${allResults.length}`);
     lines.push('');
+
+    lines.push('SUMMARY');
+    lines.push('-------');
+    for (const r of allResults) {
+      lines.push(`  FileName:  ${r.file_name}`);
+      lines.push(`  Extension: ${r.extension || '(none)'}`);
+      lines.push(`  Certainty: ${pct(r.overall_confidence)}%`);
+      lines.push('');
+    }
 
     for (const r of allResults) {
       lines.push('------------------------------------------------');

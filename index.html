@@ -11,7 +11,10 @@
     <header>
       <div class="header-top">
         <h1>File Type Analyser</h1>
-        <button id="btn-docs" class="btn btn-ghost">Docs</button>
+        <div class="header-actions">
+          <button id="btn-theme" class="btn btn-ghost btn-icon" title="Switch to light mode">☀</button>
+          <button id="btn-docs" class="btn btn-ghost">Docs</button>
+        </div>
       </div>
       <p class="subtitle">
         Identify file types via magic bytes, byte-frequency analysis, cross-correlation,
@@ -57,6 +60,20 @@
           <li>Built with <strong>Tauri v2</strong> (Rust backend) and a plain JavaScript / Vite frontend.</li>
           <li>All analysis is performed locally — no data leaves your machine.</li>
           <li>The six analysis methods run in parallel and their results are fused by weighted voting.</li>
+        </ul>
+        <h4>Privacy &amp; safety</h4>
+        <ul>
+          <li>This application is <strong>strictly read-only</strong>. It only reads the bytes of the files you submit for analysis — it never writes to, modifies, moves, renames, or deletes them.</li>
+          <li>The only file written to disk is the optional report you explicitly export via <strong>Save Results (.txt)</strong>, saved to a location of your choosing.</li>
+          <li>No network requests are made. All processing happens entirely on your local machine.</li>
+        </ul>
+        <h4>A-TIME</h4>
+        <ul>
+          <li>The application itself makes no metadata modifications. However, the <strong>operating system</strong> may update a file's <strong>atime</strong> (last-access timestamp) as a side effect of any read operation.</li>
+          <li><strong>Linux:</strong> Most modern systems use <code>relatime</code> (only updates atime if it's older than mtime) or <code>noatime</code>, so reads typically do not change atime in practice.</li>
+          <li><strong>Windows (NTFS):</strong> Last-access time tracking is disabled by default on modern Windows, so atime is generally not updated.</li>
+          <li><strong>macOS (HFS+/APFS):</strong> Behaves similarly to Linux <code>relatime</code>.</li>
+          <li>Beyond this possible OS-level atime touch, the app alters nothing.</li>
         </ul>
       </div>
 
