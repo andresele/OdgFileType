@@ -1,0 +1,18 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Vite build output
+dist/
+
+# Tauri build output (handled by src-tauri/.gitignore)
+src-tauri/target/
+src-tauri/gen/schemas/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.idea/

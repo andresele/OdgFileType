@@ -92,5 +92,5 @@ jobs:
             | Linux (portable) | `.AppImage` |
             | Windows | `.msi` or `.exe` |
             | macOS | `.dmg` |
-          releaseDraft: true     # set to false to publish immediately
+          releaseDraft: false    # publishes immediately when tag is pushed
           prerelease: false
